@@ -55,7 +55,9 @@ After reboot, the **display manager should be active**, giving a desktop session
 
 ## 4️⃣ Enable a Fake Display (EDID)
 On a headless Jetson Orin Nano, there's no real monitor connected. But some programs (like VNC, remote desktops, and some GUI apps) expect an Xorg display with a proper resolution. Xorg (X.Org Server) is the main implementation of the X11 display server for Linux and UNIX-based systems. It manages graphical output and user input by allowing applications (X clients) to draw windows, handle mouse/keyboard input, and interact with the display hardware. Xorg is the software that makes the GUI work on Linux. Without it, only a command-line interface would be available, unless using Wayland. If **Xorg doesn't detect a monitor**, it might **default to low resolution** (e.g., `640×480`) or **fail to start**.
+
 A solution is to use a dummy video driver. However, a purely software‐emulated video device does not use hardware acceleration. This causes poor performance or missing hardware-accelerated features, and can conflict with the NVIDIA driver on Jetsons.
+
 A better solution involves the use of a EDID (Extended Display Identification Data) from a display, which is a small binary data structure that a display (monitor, TV, laptop screen, etc.) sends to the GPU to describe its capabilities. This allows the system to automatically configure the correct resolution, refresh rate, and other display settings. Forcing an EDID on the NVIDIA driver tells the real NVIDIA driver to load a “fake monitor” descriptor (EDID file), so the hardware believes an HDMI/DP display is connected. This option is best because it retains GPU acceleration and you can pick any resolution and refresh rate that the driver supports (e.g. 1920×1080@60 Hz). 
 
 ### Download an EDID file  
@@ -77,7 +79,7 @@ Modify xorg.conf to use the “fake monitor” descriptor (EDID file). A **1080p
 sudo nano /etc/X11/xorg.conf
 ```
 Add the following in the "Device" section:
-```ini
+```
 Section "Device"
     Identifier  "Tegra0"
     Driver      "nvidia"
@@ -90,7 +92,7 @@ Section "Device"
 EndSection
 ```
 Next, concatenate the following at the end of the file:
-```ini
+```
 Section "Monitor"
     Identifier "Monitor0"
     VendorName "FakeVendor"
