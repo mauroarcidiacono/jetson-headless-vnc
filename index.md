@@ -193,3 +193,6 @@ vncviewer ip-address-or-name-jetson:5900
 
 ## ✅ Done!
 Now, you should be able to access your **Jetson Orin Nano’s GUI headless over VNC!** 🎉
+
+---
+**Author**: Mauro Francisco Arcidiacono
