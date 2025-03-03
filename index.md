@@ -3,7 +3,7 @@ layout: default
 title: "Jetson Orin Nano Headless GUI + VNC Setup"
 ---
 
-# Instructions to setup a Virtual Network Computing (VNC) system for Jetson Orin Nano 🚀  
+# Instructions to setup a Virtual Network Computing (VNC) system for Jetson Orin Nano  
 
 These instructions were tested in **Jetson Orin Nano Developer Kit with JetPack 6.1** to set up a VNC system, allowing a laptop to access a **GUI on a headless Jetson**.  
 The objective is to enable a **GUI on a Jetson Orin Nano running headless**, meaning it operates without a **directly attached display, keyboard, or mouse**.
