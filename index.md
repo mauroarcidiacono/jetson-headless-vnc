@@ -67,6 +67,10 @@ EDID files can be obtained from the web. You can obtain EDID files from:
 ### Apply the EDID file:
 Once you decided which EDID .bin file to use, move it to the Jetson Nano storage as follows:
 ```sh
+scp EDID.bin username-remote-machine@ip-address-or-name-jetson:/tmp
+```
+In the Jetson, move the file from /tmp to a edid folder:
+```sh
 sudo mkdir -p /lib/firmware/edid
 sudo cp /tmp/EDID.bin /lib/firmware/edid/EDID.bin
 ```
