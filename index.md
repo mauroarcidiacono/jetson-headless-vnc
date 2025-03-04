@@ -82,7 +82,7 @@ Modify xorg.conf to use the “fake monitor” descriptor (EDID file). A **1080p
 ```sh
 sudo nano /etc/X11/xorg.conf
 ```
-Add the following in the "Device" section:
+Add the following in the "Device" section (**remember to change the path in the CustomEDID option to the correct one**):
 ```
 Section "Device"
     Identifier  "Tegra0"
