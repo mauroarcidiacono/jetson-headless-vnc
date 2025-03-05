@@ -119,10 +119,22 @@ Save the file and close it.
 
 ---
 
-## 6️⃣ Reboot and Verify  
+## 6️⃣ Enable Auto-Login, Reboot and Verify
+Edit GDM's custom config (as root):
+```sh
+sudo nano /etc/gmd3/custom.conf
+```
+Look for the daemon section and add or uncomment lines like:
+```
+[daemon]
+AutomaticLoginEnable=true
+AutomaticLogin=replace_with_your_username
+```
+Save, exit and reboot.
 ```sh
 sudo reboot
 ```
+**Important Note**: having auto-login enabled ensures that a full desktop session is started on display :0. VNC mirrors an active X session, and without auto-login, the system only shows a login screen (the greeter) that doesn't have the complete user session and X credentials needed for VNC to display the desktop properly. However, auto-login bypasses the login screen, so if someone gains physical access to the device, they can immediately access the desktop without needing to enter any credentials. This security risk is why **auto-login is recommended only for development purposes and should be disabled in production environments**. 
 After you reboot, Xorg should load this configuration. Even without a real monitor, it will create a 1920×1080 desktop on :0. That can be verified with the following command:
 ```sh
 DISPLAY=:0 xrandr
