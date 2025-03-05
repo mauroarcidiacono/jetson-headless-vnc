@@ -176,6 +176,10 @@ Restart=on-failure
 WantedBy=graphical.target
 ```
 The -display flag is present in ExecStart because of a possible race issue. x11vnc might try to attach :0 before the GUI session is ready. The WAIT:0 option tells x11vnc to wait until :0 actually appears (rather than failing immediately if the X server isn’t fully up).
+Next, enable the service so it launches on startup:
+```sh
+sudo systemctl enable x11vnc.service
+```
 
 ---
 
