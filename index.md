@@ -122,7 +122,7 @@ Save the file and close it.
 ## 6️⃣ Enable Auto-Login, Reboot and Verify
 Edit GDM's custom config (as root):
 ```sh
-sudo nano /etc/gmd3/custom.conf
+sudo nano /etc/gdm3/custom.conf
 ```
 Look for the daemon section and add or uncomment lines like:
 ```
