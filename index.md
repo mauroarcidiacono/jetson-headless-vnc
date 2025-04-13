@@ -171,7 +171,7 @@ Once you confirmed manually that the VNC works and that you have access to the J
 ```sh
 sudo nano /etc/systemd/system/x11vnc.service
 ```
-Paste this inside:
+Paste this inside and update the username field:
 ```ini
 [Unit]
 Description=Start x11vnc at startup
